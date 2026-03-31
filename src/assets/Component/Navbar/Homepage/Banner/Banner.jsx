@@ -3,8 +3,8 @@ import bannerImage from "../../../../../../../IPL-dream-11-resource/assets/banne
 const Banner = () => {
   return (
     <>
-      <div>
-        <div className="container mx-auto  rounded-3xl p-15 text-center mt-6 bg-linear-to-r from-orange-500 to-yellow-400">
+      <div className="w-9/12 container mx-auto shadow-md rounded-3xl">
+        <div className="rounded-3xl p-15 text-center mt-6 bg-linear-to-r from-orange-500 to-yellow-400">
           <div className="flex justify-center">
             <img className="flex-0 justify-center" src={bannerImage} alt="" />
           </div>
