@@ -84,7 +84,7 @@ function App() {
           </div>
         </div>
       </div>
-      <h1 className="font-bold text-6xl text-[purple]">Hello World!</h1>
+      <h1 className="font-bold text-6xl text-[purple]">Hello World! mrinoy</h1>
     </>
   );
 }
