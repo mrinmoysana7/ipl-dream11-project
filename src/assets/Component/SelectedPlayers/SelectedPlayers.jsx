@@ -1,29 +1,41 @@
-import { Trash } from "lucide-react";
+import SelectedCard from "../SelectedCard/SelectedCard";
 
-const SelectedPlayers = ({selectedPlayers}) => {
-    console.log(selectedPlayers)
-    return (
-        <div className="w-12/12 mx-auto space-y-6 ">
-            {/* <h1>Selected Players</h1> */}
-            {
-                selectedPlayers.map((player, index) => {
-                    return <div key={index} className="flex justify-between p-6 border border-gray-200 items-center rounded-2xl shadow-lg">
-                        <div className="flex items-center">
-                            <img className="w-20 h-20 mr-6 rounded-2xl" src={player.playerImage} alt="" />
-                            <div>
-                                <h2>{player.playerName}</h2>
-                                <p>{player.playerType}</p>
-                            </div>
-
-                        </div>
-                        <button className="text-[red] btn rounded-full bg-transparent shadow-md">
-                            <Trash></Trash>
-                        </button>
-                    </div>
-                })
-            }
-        </div>
+const SelectedPlayers = ({
+  selectedPlayers,
+  setSelectedPlayers,
+  setCoinValue,
+  coinValue,
+}) => {
+  console.log(selectedPlayers, "selectedPlayers");
+  const handleDeleteSelectedPlayer = (player) => {
+    console.log(selectedPlayers, "selectedPlayers");
+    const filteredPlayers = selectedPlayers.filter(
+      (selectedPlayer) => selectedPlayer.playerName !== player.playerName,
     );
+    console.log(filteredPlayers, "filteredPlayers");
+    setSelectedPlayers(filteredPlayers);
+    setCoinValue(coinValue + player.price);
+  };
+  return (
+    <div className="w-12/12 mx-auto space-y-6 ">
+      {/* <h1>Selected Players</h1> */}
+      {selectedPlayers.length === 0 ? (
+        <div className="h-100 flex justify-center items-center flex-col gap-4">
+          <h2 className="font-semibold text-xl">No Players Selected Yet</h2>
+        </div>
+      ) : (
+        selectedPlayers.map((player, index) => {
+          return (
+            <SelectedCard
+              key={index}
+              player={player}
+              handleDeleteSelectedPlayer={handleDeleteSelectedPlayer}
+            ></SelectedCard>
+          );
+        })
+      )}
+    </div>
+  );
 };
 
 export default SelectedPlayers;

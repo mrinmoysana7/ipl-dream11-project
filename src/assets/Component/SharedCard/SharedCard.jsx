@@ -1,5 +1,6 @@
 import { Flag, UserRound } from "lucide-react";
 import { useState } from "react";
+import { toast} from "react-toastify";
 const SharedCard = ({player, setCoinValue, coinValue, selectedPlayers, setSelectedPlayers}) => {
     const [isSelected, setIsSelected] = useState(false);
     const setPlayerCoinValue = () => {
@@ -7,12 +8,12 @@ const SharedCard = ({player, setCoinValue, coinValue, selectedPlayers, setSelect
             if(newValue >= 0){
                 setCoinValue(coinValue - player.price)
             } else {
-                alert("You don't have enough money to purchase" );
+                toast.error("You don't have enough money to purchase" );
                 return; 
             }
             
-
-            alert(`${player.playerName} is selected`)
+            toast.success(`${player.playerName} is selected`)
+            
             setIsSelected(true); 
             // setCoinValue(coinValue - player.price);
             setSelectedPlayers([...selectedPlayers, player])
